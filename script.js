@@ -1,40 +1,93 @@
-async function carregarTreino() {
-    const url = "https://raw.githubusercontent.com/pythonmarcio/treino/refs/heads/main/treino.json"; // substitua aqui depois
-    const response = await fetch(url);
-    const treino = await response.json();
-    const container = document.getElementById("treino");
+const url = "https://raw.githubusercontent.com/pythonmarcio/treino/refs/heads/main/treino.json"; // coloque seu link aqui
 
-    for (const dia in treino) {
-        const divDia = document.createElement("div");
-        divDia.className = "dia";
+const salvarEstado = (estado) => {
+    localStorage.setItem("estadoTreino", JSON.stringify(estado));
+};
 
-        const titulo = document.createElement("h2");
-        titulo.textContent = dia;
-        divDia.appendChild(titulo);
+const carregarEstado = () => {
+    const dados = localStorage.getItem("estadoTreino");
+    return dados ? JSON.parse(dados) : {};
+};
 
-        const lista = document.createElement("ul");
+const resetarProgresso = () => {
+    if (confirm("Tem certeza que deseja resetar todos os exercícios?")) {
+        localStorage.removeItem("estadoTreino");
+        location.reload();
+    }
+};
 
-        treino[dia].forEach(exercicio => {
-            const item = document.createElement("li");
+const exportarProgresso = () => {
+    const dados = localStorage.getItem("estadoTreino") || "{}";
+    const blob = new Blob([dados], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "progresso_treino.json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
 
-            const label = document.createElement("label");
-            label.textContent = `${exercicio.nome} (${exercicio.series})`;
+document.getElementById("fileInput").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (!file) return;
 
-            const checkbox = document.createElement("input");
-            checkbox.type = "checkbox";
-            checkbox.checked = exercicio.concluido;
-            checkbox.addEventListener("change", () => {
-                label.className = checkbox.checked ? "concluido" : "";
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        try {
+            const dadosImportados = JSON.parse(e.target.result);
+            localStorage.setItem("estadoTreino", JSON.stringify(dadosImportados));
+            alert("Progresso importado com sucesso!");
+            location.reload();
+        } catch (error) {
+            alert("Erro ao importar o arquivo. Verifique se é um JSON válido.");
+        }
+    };
+    reader.readAsText(file);
+});
+
+const estadoAtual = carregarEstado();
+
+fetch(url)
+    .then(res => res.json())
+    .then(treino => {
+        const container = document.getElementById("treino-container");
+
+        Object.entries(treino).forEach(([dia, exercicios]) => {
+            const diaDiv = document.createElement("div");
+            diaDiv.className = "dia";
+
+            const titulo = document.createElement("h2");
+            titulo.textContent = dia;
+            diaDiv.appendChild(titulo);
+
+            exercicios.forEach(ex => {
+                const exercicioDiv = document.createElement("div");
+                exercicioDiv.className = "exercicio";
+
+                const label = document.createElement("label");
+                const key = `${dia}-${ex.id}`;
+
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.checked = estadoAtual[key] || false;
+
+                const texto = document.createElement("span");
+                texto.textContent = `${ex.nome} (${ex.series})`;
+                if (checkbox.checked) texto.classList.add("concluido");
+
+                checkbox.addEventListener("change", () => {
+                    estadoAtual[key] = checkbox.checked;
+                    salvarEstado(estadoAtual);
+                    texto.classList.toggle("concluido", checkbox.checked);
+                });
+
+                label.appendChild(checkbox);
+                label.appendChild(texto);
+
+                exercicioDiv.appendChild(label);
+                diaDiv.appendChild(exercicioDiv);
             });
 
-            item.appendChild(label);
-            item.appendChild(checkbox);
-            lista.appendChild(item);
+            container.appendChild(diaDiv);
         });
-
-        divDia.appendChild(lista);
-        container.appendChild(divDia);
-    }
-}
-
-carregarTreino();
+    });

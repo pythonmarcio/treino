@@ -1,0 +1,48 @@
+# Dados do treino
+treino = {
+    "Segunda-feira": [
+        {"id": "1", "nome": "Supino reto com barra"            , "series": "4x10"  , "concluido": False},
+        {"id": "2", "nome": "Supino inclinado com halteres"    , "series": "3x10"  , "concluido": False},
+        {"id": "3", "nome": "Crucifixo na máquina ou halteres" , "series": "3x12"  , "concluido": False},
+        {"id": "4", "nome": "Paralelas ou mergulho no banco"   , "series": "3x10"  , "concluido": False},
+        {"id": "5", "nome": "Tríceps corda na polia"           , "series": "3x12"  , "concluido": False},
+        {"id": "6", "nome": "Tríceps francês unilateral "      , "series": "3x12"  , "concluido": False},
+    ],
+    "Terça-feira": [
+        {"id": "5", "nome": "Barra fixa (assistida ou livre)"  , "series": "4x8-10", "concluido": False},
+        {"id": "6", "nome": "Remada curvada com barra"         , "series": "4x10"  , "concluido": False},
+        {"id": "7", "nome": "Pulldown na polia alta"           , "series": "3x12"  , "concluido": False},
+        {"id": "8", "nome": "Remada unilateral com halteres"   , "series": "4x10"  , "concluido": False},
+        {"id": "8", "nome": "Rosca direta com barra"           , "series": "4x10"  , "concluido": False},
+        {"id": "8", "nome": "Rosca martelo com halteres"       , "series": "4x12"  , "concluido": False},
+        {"id": "8", "nome": "Rosca concentrada"                , "series": "4x12"  , "concluido": False},
+    ],
+    "Quarta-feira": [
+        {"id": "1", "nome": "Agachamento livre"                , "series": "4x10"  , "concluido": False},
+        {"id": "2", "nome": "Leg press 45°"                    , "series": "4x12"  , "concluido": False},
+        {"id": "3", "nome": "Afundo com halteres"              , "series": "3x10(cada perna)"  , "concluido": False},
+        {"id": "4", "nome": "Stiff com barra ou halteres"      , "series": "4x12"  , "concluido": False},
+        {"id": "5", "nome": "Extensora"                        , "series": "4x12"  , "concluido": False},
+        {"id": "6", "nome": "Flexora deitada "                 , "series": "4x12"  , "concluido": False},
+        {"id": "7", "nome": "Panturrilha no leg press"         , "series": "4x12"  , "concluido": False},
+        {"id": "9", "nome": "Panturrilha em pé na máquina"     , "series": "4x15"  , "concluido": False},
+    ],
+    "Quinta-feira": [
+        {"id": "1", "nome": "Desenvolvimento com halteres"          , "series": "4x10"  , "concluido": False},
+        {"id": "2", "nome": "Elevação lateral"                      , "series": "4x12"  , "concluido": False},
+        {"id": "3", "nome": "Elevação frontal com barra ou halteres", "series": "3x12"  , "concluido": False},
+        {"id": "4", "nome": "Crucifixo invertido na máquina"        , "series": "4x12"  , "concluido": False},
+        {"id": "5", "nome": "Encolhimento com halteres (trapézio)"  , "series": "4x12"  , "concluido": False},
+        {"id": "6", "nome": "Remada alta com barra"                 , "series": "4x12"  , "concluido": False},
+    ],
+    "Sexta-feira": [
+        {"id": "1", "nome": "Rosca direta com barra"          , "series": "4x10"  , "concluido": False},
+        {"id": "2", "nome": "Rosca alternada com halteres "   , "series": "4x12"  , "concluido": False},
+        {"id": "3", "nome": "Rosca scott na máquina ou banco" , "series": "3x12"  , "concluido": False},
+        {"id": "4", "nome": "Tríceps testa com barra"         , "series": "4x10"  , "concluido": False},
+        {"id": "5", "nome": "Tríceps corda na polia"          , "series": "4x12"  , "concluido": False},
+        {"id": "6", "nome": "Prancha abdominal"               , "series": "3x 45-60s"  , "concluido": False},
+        {"id": "6", "nome": "Abdominal infra na barra fixa"   , "series": "4x15"  , "concluido": False},
+        {"id": "6", "nome": "Abdominal oblíquo com peso"      , "series": "4x12"  , "concluido": False},
+    ],
+}

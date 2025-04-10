@@ -1,5 +1,4 @@
-# Dados do treino
-treino = {
+{
     "Segunda-feira": [
         {"id": "1", "nome": "Supino reto com barra"            , "series": "4x10"  , "concluido": False},
         {"id": "2", "nome": "Supino inclinado com halteres"    , "series": "3x10"  , "concluido": False},

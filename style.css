@@ -1,39 +1,37 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    font-family: 'Inter', sans-serif;
+    background: #f2f4f8;
     margin: 0;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
+    color: #333;
 }
 
 .dia {
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 20px;
     margin-bottom: 20px;
-    padding: 15px;
 }
 
 .dia h2 {
-    color: #333;
+    color: #2b6cb0;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    background: #e0f7fa;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
+.exercicio {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.exercicio:last-child {
+    border-bottom: none;
 }
 
 .concluido {
@@ -41,6 +39,40 @@ li {
     color: #888;
 }
 
-input[type="checkbox"] {
-    transform: scale(1.2);
+.btn {
+    display: block;
+    margin: 10px auto 0;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reset-btn {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.reset-btn:hover {
+    background-color: #c53030;
+}
+
+.export-btn {
+    background-color: #3182ce;
+    color: white;
+}
+
+.export-btn:hover {
+    background-color: #2b6cb0;
+}
+
+.import-btn {
+    background-color: #38a169;
+    color: white;
+}
+
+.import-btn:hover {
+    background-color: #2f855a;
 }

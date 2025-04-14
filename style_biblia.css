@@ -1,0 +1,90 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.book {
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    background: #fff;
+}
+
+.book.completed {
+    border-color: #4caf50;
+    background: #e8f5e9;
+}
+
+.book h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #2e7d32;
+}
+
+.chapter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chapter-btn {
+    position: relative;
+    padding: 10px 14px;
+    border: none;
+    background: #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.chapter-btn.read {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.chapter-date {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 12px;
+    color: #388e3c;
+}
+
+.chapter-btn-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 2px;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    /* acima do botão */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.chapter-btn-wrapper:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}

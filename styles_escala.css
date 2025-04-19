@@ -1,4 +1,6 @@
 /* styles.css */
+
+/* Reset padrão */
 * {
     margin: 0;
     padding: 0;
@@ -18,21 +20,28 @@ body {
 .container {
     width: 90%;
     max-width: 600px;
+    /* Tamanho máximo para desktops */
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    /* Permite rolagem horizontal em telas muito pequenas */
 }
 
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 24px;
+    /* Tamanho de fonte maior para título */
 }
 
 .calendar-controls {
     display: flex;
     justify-content: space-between;
+    /* Alinha os botões e o mês/ano */
     align-items: center;
+    /* Centraliza verticalmente */
     margin-bottom: 20px;
 }
 
@@ -46,24 +55,50 @@ h1 {
 .calendar-controls h2 {
     font-size: 18px;
     font-weight: bold;
+    margin: 0;
+    /* Remove margens extras */
+    text-align: center;
+    flex-grow: 1;
+    /* Ocupa espaço centralizado */
 }
 
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    /* 7 colunas para os dias da semana */
     gap: 5px;
 }
 
-.calendar-grid div {
+.calendar-grid .day-header {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    background-color: #f4f4f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    /* Tamanho da fonte para os cabeçalhos */
+}
+
+.calendar-grid div:not(.day-header) {
     padding: 10px;
     text-align: center;
     border: 1px solid #ddd;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    /* Organiza o conteúdo em duas linhas */
+    justify-content: center;
+    /* Centraliza verticalmente */
+    align-items: center;
+    /* Centraliza horizontalmente */
+    font-size: 14px;
+    /* Tamanho da fonte para os números */
 }
 
-.calendar-grid div:hover {
+.calendar-grid div:not(.day-header):hover {
     background-color: #f0f0f0;
 }
 
@@ -82,40 +117,30 @@ h1 {
     color: white;
 }
 
-/* styles.css */
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-}
+/* Responsividade para telas menores (smartphones) */
+@media (max-width: 600px) {
+    .container {
+        max-width: 100%;
+        /* Preenche toda a largura da tela */
+    }
 
-.calendar-grid .day-header {
-    font-weight: bold;
-    text-align: center;
-    padding: 10px;
-    background-color: #f4f4f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
+    .calendar-grid div:not(.day-header) {
+        font-size: 12px;
+        /* Reduz o tamanho da fonte em telas menores */
+    }
 
-/* styles.css */
-.calendar-grid div {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: flex;
-    flex-direction: column;
-    /* Organiza o conteúdo em duas linhas */
-    justify-content: center;
-    /* Centraliza verticalmente */
-    align-items: center;
-    /* Centraliza horizontalmente */
-}
+    .calendar-grid .day-header {
+        font-size: 12px;
+        /* Reduz o tamanho da fonte dos cabeçalhos */
+    }
 
-.calendar-grid div span {
-    font-size: 12px;
-    /* Tamanho menor para o nome do dia da semana */
+    .calendar-controls button {
+        font-size: 20px;
+        /* Reduz o tamanho dos botões de navegação */
+    }
+
+    .calendar-controls h2 {
+        font-size: 16px;
+        /* Reduz o tamanho do mês/ano */
+    }
 }

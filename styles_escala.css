@@ -102,9 +102,15 @@ h1 {
     background-color: #f0f0f0;
 }
 
-.calendar-grid div.today {
-    background-color: #ffeb3b;
+/* styles.css */
+
+/* styles.css */
+
+.calendar-grid div.today span {
+    color: red;
+    /* Texto do número e do dia da semana em vermelho */
     font-weight: bold;
+    /* Texto em negrito */
 }
 
 .calendar-grid div.completed {

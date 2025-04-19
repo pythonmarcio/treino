@@ -79,15 +79,15 @@ document.addEventListener("DOMContentLoaded", () => {
             cell.appendChild(dayOfWeekSpan);
             cell.appendChild(dayNumberSpan);
 
+            // Marcar o dia atual
+            if (day === currentDate.getDate() && currentMonth === currentDate.getMonth() && currentYear === currentDate.getFullYear()) {
+                cell.classList.add("today");
+            }
+
             // Restaurar o estado salvo
             const dateKey = `${currentYear}-${currentMonth + 1}-${day}`;
             if (state[dateKey]) {
                 cell.classList.add(state[dateKey]);
-            }
-
-            // Marcar o dia atual
-            if (day === currentDate.getDate() && currentMonth === currentDate.getMonth() && currentYear === currentDate.getFullYear()) {
-                cell.classList.add("today");
             }
 
             // Adicionar evento de clique para marcar como concluído ou em trabalho

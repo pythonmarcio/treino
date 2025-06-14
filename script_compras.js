@@ -137,3 +137,29 @@ atualizarDatalist();
 renderizarCarrinho();
 document.getElementById('gerenciar-produtos').style.display = 'none';
 document.getElementById('toggle-btn').textContent = 'Maximizar';
+
+// Envio de Whatsapp
+
+function enviarParaWhatsApp() {
+  if (carrinho.length === 0) {
+    alert("O carrinho está vazio.");
+    return;
+  }
+
+  const data = new Date();
+  const dataFormatada = data.toLocaleString("pt-BR");
+
+  let mensagem = `🛒 *Registro de Compras* - ${dataFormatada}\n\n`;
+
+  carrinho.forEach(item => {
+    const precoAtual = produtos[item.nome] || item.preco;
+    const subtotal = precoAtual * item.qtd;
+    mensagem += `• ${item.qtd} x ${item.nome} (R$ ${precoAtual.toFixed(2)}) = R$ ${subtotal.toFixed(2)}\n`;
+  });
+
+  mensagem += `\n💰 *Total:* R$ ${total.toFixed(2)}`;
+
+  const encodedMessage = encodeURIComponent(mensagem);
+  const whatsappLink = `https://wa.me/?text=${encodedMessage}`;
+  window.open(whatsappLink, '_blank');
+}
